@@ -1,0 +1,21 @@
+services:
+  postgres:
+    container_name: micache-db
+    image: 'postgres:alpine3.20'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - 'POSTGRES_DB=micache-db'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=postgres'
+      - 'PGDATA: /data/postgres'
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: always
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  postgres-data:
