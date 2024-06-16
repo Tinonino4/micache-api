@@ -30,17 +30,23 @@ import java.util.stream.Collectors;
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private JwtUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
+
+    public UserDetailServiceImpl(JwtUtils jwtUtils,
+                                 PasswordEncoder passwordEncoder,
+                                 UserRepository userRepository,
+                                 RoleRepository roleRepository) {
+        this.jwtUtils = jwtUtils;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
