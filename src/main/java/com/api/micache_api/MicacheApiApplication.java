@@ -20,10 +20,10 @@ public class MicacheApiApplication {
 		SpringApplication.run(MicacheApiApplication.class, args);
 	}
 
-	@Bean
+	/* @Bean
 	CommandLineRunner init(UserRepository userRepository) {
 		return args -> {
-			/* Create PERMISSIONS */
+			// Create PERMISSIONS
 			PermissionEntity createPermission = PermissionEntity.builder()
 					.name("CREATE")
 					.build();
@@ -40,7 +40,7 @@ public class MicacheApiApplication {
 					.name("DELETE")
 					.build();
 
-			/* Create ROLES */
+			// Create ROLES
 			RoleEntity roleAdmin = RoleEntity.builder()
 					.roleEnum(RoleEnum.ADMIN)
 					.permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
@@ -57,7 +57,7 @@ public class MicacheApiApplication {
 					.permissionList(Set.of(createPermission, readPermission, updatePermission, deletePermission))
 					.build();
 
-			/* CREATE USERS */
+			// CREATE USERS
 			UserEntity userTino = UserEntity.builder()
 					.username("tino")
 					.password("$2a$10$cMY29RPYoIHMJSuwRfoD3eQxU1J5Rww4VnNOUOAEPqCBshkNfrEf6")
@@ -100,5 +100,5 @@ public class MicacheApiApplication {
 
 			userRepository.saveAll(List.of(userTino, userDaniel, userAndrea, userAnyi));
 		};
-	}
+	}*/
 }

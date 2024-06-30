@@ -22,7 +22,8 @@ public class UserProfileEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "profile") // Mapped by refers to the field in User
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", unique = true)
     private UserEntity user;
 
     @CreationTimestamp
@@ -38,7 +39,7 @@ public class UserProfileEntity {
     private String zipcode;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "jobTitle")
+    @Column(name = "job_title")
     private String jobTitle;
     private String education;
 }

@@ -1,5 +1,6 @@
 package com.api.micache_api.security.persistence.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,7 +40,7 @@ public class UserEntity {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roles = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", unique = true) // One-to-One with unique constraint on user_id
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = true)  // Optional profile
     private UserProfileEntity profile;
+
 }
